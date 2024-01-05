@@ -53,7 +53,18 @@ function App() {
   
 
   const onSendData = useCallback(()=>{
-    telegram.sendData(JSON.stringify(cartItems))
+    const queryId = telegram.initDataUnsafe?.query_id;
+    if(queryId){
+      fetch("https://tgserver-crqs.onrender.com", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({products: cartItems,queryId: queryId }),
+      });
+    }else{
+      telegram.sendData(JSON.stringify(cartItems))
+    }
   },[cartItems] );
 
     useEffect(()=> {
