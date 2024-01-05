@@ -20,6 +20,7 @@ const Card = (props) => {
 
      <div className="image_container">
         <img src={food.Image}
+        loading="lazy"
          alt={food.title}
          width={'100%'}
          height={'230px'} />
