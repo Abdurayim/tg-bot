@@ -55,7 +55,7 @@ function App() {
   const onSendData = useCallback(()=>{
     const queryId = telegram.initDataUnsafe?.query_id;
     if(queryId){
-      fetch("https://tgserver-crqs.onrender.com", {
+      fetch("https://tgserver-crqs.onrender.com/web-data", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
